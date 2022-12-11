@@ -5,6 +5,7 @@ public class Singleton {
 
     private Singleton() {}
 
+    // Multiple instance creation prevention
     public static Singleton createInstance() {
         if (mySingleton == null) {
             mySingleton = new Singleton();
