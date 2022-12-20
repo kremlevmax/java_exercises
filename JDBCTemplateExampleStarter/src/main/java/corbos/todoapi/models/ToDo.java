@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.sg.jdbctemplateexample;
+package corbos.todoapi.models;
 
-/**
- *
- * @author kylerudy
- */
 public class ToDo {
-    int id;
-    String todo;
-    String note;
-    boolean finished;
+
+    private int id;
+    private String todo;
+    private String note;
+    private boolean finished;
 
     public int getId() {
         return id;
@@ -46,6 +38,4 @@ public class ToDo {
     public void setFinished(boolean finished) {
         this.finished = finished;
     }
-    
-    
 }
