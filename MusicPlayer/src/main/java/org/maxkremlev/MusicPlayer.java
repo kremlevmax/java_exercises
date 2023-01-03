@@ -6,6 +6,15 @@ import java.util.List;
 
 public class MusicPlayer {
     private List<Music> playList;
+    private int volume;
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
 
     public List<Music> getPlayList() {
         return playList;
@@ -16,6 +25,7 @@ public class MusicPlayer {
     }
 
     public void playMusic() {
+        System.out.printf("Volume - %s%s\n",this.volume, "%");
         for (Music music: this.playList) {
             System.out.println(music.showSong());
         }
