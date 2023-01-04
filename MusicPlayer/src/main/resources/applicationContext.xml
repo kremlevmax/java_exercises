@@ -8,19 +8,19 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="rockMusic" class="org.maxkremlev.Music.RockMusic"/>
-    <bean id="countryMusic" class="org.maxkremlev.Music.CountryMusic"/>
-    <bean id="hipHopMusic" class="org.maxkremlev.Music.HipHopMusic"/>
+    <bean id="rockMusic" class="org.maxkremlev.Music.RockMusic" scope="singleton"/>
+    <bean id="countryMusic" class="org.maxkremlev.Music.CountryMusic" scope="prototype"/>
+<!--    <bean id="hipHopMusic" class="org.maxkremlev.Music.HipHopMusic"/>-->
 
-    <bean id="musicPlayer" class="org.maxkremlev.MusicPlayer">
-        <property name="playList">
-            <list>
-                <ref bean="countryMusic"/>
-                <ref bean="hipHopMusic"/>
-                <ref bean="rockMusic"/>
-            </list>
-        </property>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+<!--    <bean id="musicPlayer" class="org.maxkremlev.MusicPlayer">-->
+<!--        <property name="playList">-->
+<!--            <list>-->
+<!--                <ref bean="countryMusic"/>-->
+<!--                <ref bean="hipHopMusic"/>-->
+<!--                <ref bean="rockMusic"/>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+<!--    </bean>-->
 
 </beans>
