@@ -8,8 +8,17 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="rockMusic" class="org.maxkremlev.Music.RockMusic" scope="singleton"/>
-    <bean id="countryMusic" class="org.maxkremlev.Music.CountryMusic" scope="prototype"/>
+    <bean id="rockMusic"
+          class="org.maxkremlev.Music.RockMusic"
+          scope="singleton"
+          init-method="initRock"
+          destroy-method="destroyRock"/>
+
+    <bean id="countryMusic"
+          class="org.maxkremlev.Music.CountryMusic"
+          scope="prototype"
+          init-method="countryInit"
+          destroy-method="countryDestroy"/>
 <!--    <bean id="hipHopMusic" class="org.maxkremlev.Music.HipHopMusic"/>-->
 
 <!--    <bean id="musicPlayer" class="org.maxkremlev.MusicPlayer">-->
