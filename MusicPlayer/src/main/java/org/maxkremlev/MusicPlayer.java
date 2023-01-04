@@ -1,11 +1,17 @@
 package org.maxkremlev;
 
 import org.maxkremlev.Music.Music;
+import org.maxkremlev.Music.RockMusic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public class MusicPlayer {
-    private List<Music> playList;
+//    private List<Music> playList;
+    @Autowired
+    private RockMusic rockMusic;
+
     private int volume;
 
     public int getVolume() {
@@ -16,18 +22,16 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public List<Music> getPlayList() {
-        return playList;
-    }
+//    public List<Music> getPlayList() {
+//        return playList;
+//    }
 
-    public void setPlayList(List<Music> playList) {
-        this.playList = playList;
-    }
+//    public void setPlayList(List<Music> playList) {
+//        this.playList = playList;
+//    }
 
     public void playMusic() {
         System.out.printf("Volume - %s%s\n",this.volume, "%");
-        for (Music music: this.playList) {
-            System.out.println(music.showSong());
-        }
+            System.out.println(rockMusic.showSong());
     }
 }

@@ -9,14 +9,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Music bean1 = context.getBean("rockMusic", RockMusic.class);
-        Music bean2 = context.getBean("rockMusic", RockMusic.class);
-        System.out.println(bean2.hashCode());
-        System.out.println(bean1.hashCode());
-
-
-        Music bean3 = context.getBean("countryMusic", CountryMusic.class);
-        Music bean4 = context.getBean("countryMusic", CountryMusic.class);
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        musicPlayer.playMusic();
         context.close();
 
     }
