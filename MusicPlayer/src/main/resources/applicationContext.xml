@@ -7,29 +7,6 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean id="rockMusic"
-          class="org.maxkremlev.Music.RockMusic"
-          scope="singleton"
-          init-method="initRock"
-          destroy-method="destroyRock"/>
-
-    <bean id="countryMusic"
-          class="org.maxkremlev.Music.CountryMusic"
-          scope="prototype"
-          init-method="countryInit"
-          destroy-method="countryDestroy"/>
-<!--    <bean id="hipHopMusic" class="org.maxkremlev.Music.HipHopMusic"/>-->
-
-<!--    <bean id="musicPlayer" class="org.maxkremlev.MusicPlayer">-->
-<!--        <property name="playList">-->
-<!--            <list>-->
-<!--                <ref bean="countryMusic"/>-->
-<!--                <ref bean="hipHopMusic"/>-->
-<!--                <ref bean="rockMusic"/>-->
-<!--            </list>-->
-<!--        </property>-->
-<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
-<!--    </bean>-->
+    <context:component-scan base-package="org.maxkremlev"/>
 
 </beans>

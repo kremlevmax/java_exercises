@@ -1,5 +1,8 @@
 package org.maxkremlev.Music;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RockMusic implements Music {
     public void initRock() {
         System.out.println("Rock Music Init");

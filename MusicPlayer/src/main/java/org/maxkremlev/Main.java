@@ -11,6 +11,9 @@ public class Main {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         Music bean1 = context.getBean("rockMusic", RockMusic.class);
         Music bean2 = context.getBean("rockMusic", RockMusic.class);
+        System.out.println(bean2.hashCode());
+        System.out.println(bean1.hashCode());
+
 
         Music bean3 = context.getBean("countryMusic", CountryMusic.class);
         Music bean4 = context.getBean("countryMusic", CountryMusic.class);
