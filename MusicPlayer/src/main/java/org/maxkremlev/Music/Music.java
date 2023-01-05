@@ -1,5 +1,5 @@
 package org.maxkremlev.Music;
 
 public interface Music {
-    String showSong();
+    String showSong(int trackNumber);
 }
