@@ -3,16 +3,22 @@ package org.maxkremlev;
 import org.maxkremlev.Music.Music;
 import org.maxkremlev.Music.RockMusic;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
 public class MusicPlayer {
-//    private List<Music> playList;
-    @Autowired
-    private RockMusic rockMusic;
+    private final Music music1, music2;
 
     private int volume;
+
+    @Autowired
+    public MusicPlayer(@Qualifier("rockMusic") Music music1,
+                       @Qualifier("countryMusic") Music music2) {
+        this.music1 = music1;
+        this.music2 = music2;
+    }
 
     public int getVolume() {
         return volume;
@@ -22,16 +28,9 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-//    public List<Music> getPlayList() {
-//        return playList;
-//    }
-
-//    public void setPlayList(List<Music> playList) {
-//        this.playList = playList;
-//    }
-
     public void playMusic() {
         System.out.printf("Volume - %s%s\n",this.volume, "%");
-            System.out.println(rockMusic.showSong());
+        System.out.println(music1.showSong());
+        System.out.println(music2.showSong());
     }
 }
