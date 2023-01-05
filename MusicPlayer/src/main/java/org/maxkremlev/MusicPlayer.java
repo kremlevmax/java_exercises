@@ -4,6 +4,7 @@ import org.maxkremlev.Music.Music;
 import org.maxkremlev.Music.MusicGenre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -12,6 +13,7 @@ import java.util.Random;
 public class MusicPlayer {
     private final Music music1, music2, music3;
 
+    @Value("${musicPlayer.volume}")
     private int volume;
 
     @Autowired
