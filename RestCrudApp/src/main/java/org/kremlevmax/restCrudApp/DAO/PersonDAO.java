@@ -13,8 +13,8 @@ public class PersonDAO {
 
     {
         db = new ArrayList<>();
-        db.add(new Person(++PERSON_COUNT, "David", "Duchovny"));
-        db.add(new Person(++PERSON_COUNT, "Jillian", "Anderson"));
+        db.add(new Person(++PERSON_COUNT, "David", "Duchovny", "Los Angeles, CA", "duchovny@yahoo.com",30));
+        db.add(new Person(++PERSON_COUNT, "Jillian", "Anderson", "Seattle, WA", "janderson@fbi.com",28));
     }
 
     public List<Person> getAllPersons() {

@@ -7,11 +7,22 @@
 <body>
 
 <form th:method="POST" th:action="@{/people}" th:object="${person}">
-  <label for="firstName">First Name</label>
-  <input type="text" th:field="*{firstName}" id="firstName"/>
-  <label for="lastName">Second Name</label>
-  <input type="text" th:field="*{lastName}" id="lastName"/>
-  <input type="submit" value="Create"/>
+    <label for="firstName">First Name</label>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
+    <br/>
+    <label for="lastName">Last Name</label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <br/>
+    <label for="placeOfBirth">Place of Birth</label>
+    <input type="text" th:field="*{pob}" id="placeOfBirth"/>
+    <br/>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <br/>
+    <label for="age">Age</label>
+    <input type="number" th:field="*{age}" id="age">
+    <br/>
+    <input type="submit" value="Create"/>
 </form>
 
 </body>
