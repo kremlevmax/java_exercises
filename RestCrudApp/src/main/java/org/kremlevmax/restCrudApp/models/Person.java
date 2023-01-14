@@ -1,8 +1,16 @@
 package org.kremlevmax.restCrudApp.models;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 public class Person {
     private int id;
-    private String firstName, lastName, pob, email;
+    @NotEmpty(message = "Field can't be empty")
+    private String firstName, lastName, pob;
+    @NotEmpty(message = "Field can't be empty")
+    @Email(message = "Incorrect email format")
+    private String email;
+    @Min(value = 1, message = "Age can't be negative")
     private int age;
 
     public Person() {

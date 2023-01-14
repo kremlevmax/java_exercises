@@ -9,5 +9,8 @@
     <span th:text="${person.getLastName()}"/>, <span th:text="${person.getAge()}"/>
     <a th:href="@{/people/{id}(id=${person.getId()})}">More</a>
 </div>
+
+<br>
+<a href="/people/new">Add a new person</a>
 </body>
 </html>

@@ -11,7 +11,7 @@
         <span th:text="${person.getLastName()}"/>,
         <span th:text="${person.getAge()}"/>,
         <span th:text="${person.getEmail()}"/>,
-        <span th:text="${person.getPob()}"/>,
+        <span th:text="${person.getPob()}"/>
         <form th:method="GET" th:action="@{/people/{id}/edit(id =${person.getId()})}">
             <input type="submit" value="Update">
         </form>
