@@ -14,7 +14,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
-    final static String VIEW_PREFIX = "people";
     final PersonDAO dao;
 
     @Autowired
