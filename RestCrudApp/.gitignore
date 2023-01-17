@@ -1,6 +1,7 @@
 ##############################
 ## Java
 ##############################
+src/main/resources/database.properties
 .mtj.tmp/
 *.class
 *.jar
