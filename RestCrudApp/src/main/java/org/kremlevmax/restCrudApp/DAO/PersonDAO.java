@@ -2,6 +2,7 @@ package org.kremlevmax.restCrudApp.DAO;
 
 import org.kremlevmax.restCrudApp.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -53,5 +54,49 @@ public class PersonDAO {
         jdbcTemplate.update("DELETE FROM Person WHERE id=?",
                 id
         );
+    }
+
+    private List<Person> create1000People() {
+        List<Person> people = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            people.add(new Person(i, "FirstName"+i, "LastName"+i, "POB"+i, "email"+i+"@email.com", i));
+        }
+
+        return people;
+    }
+
+        public void createWithoutBatch() {
+        List<Person> people = create1000People();
+
+        for (Person person : people) {
+            jdbcTemplate.update("INSERT INTO Person VALUES (?, ?, ?, ?, ?, ?)",
+                    person.getId(),
+                    person.getFirstName(),
+                    person.getLastName(),
+                    person.getPob(),
+                    person.getEmail(),
+                    person.getAge());
+        }
+    }
+
+    public void createWithBatch() {
+        List<Person> people = create1000People();
+
+        jdbcTemplate.batchUpdate("INSERT INTO Person VALUES (?, ?, ?, ?, ?, ?)", new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                ps.setInt(1, people.get(i).getId());
+                ps.setString(2, people.get(i).getFirstName());
+                ps.setString(3, people.get(i).getLastName());
+                ps.setString(4, people.get(i).getPob());
+                ps.setString(5, people.get(i).getEmail());
+                ps.setInt(6, people.get(i).getAge());
+            }
+
+            @Override
+            public int getBatchSize() {
+                return people.size();
+            }
+        });
     }
 }
