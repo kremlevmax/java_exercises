@@ -30,8 +30,7 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-         jdbcTemplate.update("INSERT INTO Person VALUES (?, ?, ?, ?, ?, ?)",
-                                person.getId(),
+         jdbcTemplate.update("INSERT INTO Person(firstName, lastName, pob, email, age) VALUES(?, ?, ?, ?, ?) ",
                                 person.getFirstName(),
                                 person.getLastName(),
                                 person.getPob(),
@@ -69,8 +68,7 @@ public class PersonDAO {
         List<Person> people = create1000People();
 
         for (Person person : people) {
-            jdbcTemplate.update("INSERT INTO Person VALUES (?, ?, ?, ?, ?, ?)",
-                    person.getId(),
+            jdbcTemplate.update("INSERT INTO Person(firstName, lastName, pob, email, age) VALUES (?, ?, ?, ?, ?)",
                     person.getFirstName(),
                     person.getLastName(),
                     person.getPob(),
@@ -82,15 +80,14 @@ public class PersonDAO {
     public void createWithBatch() {
         List<Person> people = create1000People();
 
-        jdbcTemplate.batchUpdate("INSERT INTO Person VALUES (?, ?, ?, ?, ?, ?)", new BatchPreparedStatementSetter() {
+        jdbcTemplate.batchUpdate("INSERT INTO Person(firstName, lastName, pob, email, age) VALUES (?, ?, ?, ?, ?)", new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
-                ps.setInt(1, people.get(i).getId());
-                ps.setString(2, people.get(i).getFirstName());
-                ps.setString(3, people.get(i).getLastName());
-                ps.setString(4, people.get(i).getPob());
-                ps.setString(5, people.get(i).getEmail());
-                ps.setInt(6, people.get(i).getAge());
+                ps.setString(1, people.get(i).getFirstName());
+                ps.setString(2, people.get(i).getLastName());
+                ps.setString(3, people.get(i).getPob());
+                ps.setString(4, people.get(i).getEmail());
+                ps.setInt(5, people.get(i).getAge());
             }
 
             @Override
