@@ -57,8 +57,8 @@ public class PersonDAO {
 
     private List<Person> create1000People() {
         List<Person> people = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            people.add(new Person(i, "FirstName"+i, "LastName"+i, "POB"+i, "email"+i+"@email.com", i));
+        for (int i = 1; i < 100; i++) {
+            people.add(new Person(i, "FirstName "+i, "LastName "+i, "POB "+i, "email"+i+"@email.com", i));
         }
 
         return people;
