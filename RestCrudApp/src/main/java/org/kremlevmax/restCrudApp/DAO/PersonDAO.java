@@ -13,6 +13,7 @@ import java.util.List;
 
 @Component
 public class PersonDAO {
+    // Dependency Injection
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
