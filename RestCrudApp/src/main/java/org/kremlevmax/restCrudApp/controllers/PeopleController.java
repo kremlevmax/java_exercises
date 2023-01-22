@@ -2,6 +2,7 @@ package org.kremlevmax.restCrudApp.controllers;
 
 import org.kremlevmax.restCrudApp.DAO.PersonDAO;
 import org.kremlevmax.restCrudApp.models.Person;
+import org.kremlevmax.restCrudApp.utils.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,12 @@ import java.util.List;
 @RequestMapping("/people")
 public class PeopleController {
     final PersonDAO dao;
+    final PersonValidator personValidator;
 
     @Autowired
-    public PeopleController(PersonDAO dao) {
+    public PeopleController(PersonDAO dao, PersonValidator personValidator) {
         this.dao = dao;
+        this.personValidator = personValidator;
     }
 
     @GetMapping()
@@ -41,6 +44,7 @@ public class PeopleController {
 
     @PostMapping()
     public String createNewPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        personValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return "people/new";
         } else {
@@ -58,6 +62,7 @@ public class PeopleController {
     @PatchMapping("/{id}")
     public String editPerson(@PathVariable("id") int id, @ModelAttribute("person") @Valid Person person,
                              BindingResult bindingResult) {
+        personValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return "people/edit";
         }

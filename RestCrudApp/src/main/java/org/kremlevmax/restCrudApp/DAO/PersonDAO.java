@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDAO {
-    // Dependency Injection
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -28,6 +28,11 @@ public class PersonDAO {
     public Person getPersonById(int id) {
         return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
                 .stream().findAny().orElse(null);
+    }
+
+    public Optional<Person> getPersonByEmail(String email) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE email=?", new BeanPropertyRowMapper<>(Person.class), email)
+                .stream().findAny();
     }
 
     public void save(Person person) {

@@ -5,11 +5,14 @@ import javax.validation.constraints.NotEmpty;
 
 public class Person {
     private int id;
+
     @NotEmpty(message = "Field can't be empty")
     private String firstName, lastName, pob;
+
     @NotEmpty(message = "Field can't be empty")
     @Email(message = "Incorrect email format")
     private String email;
+
     @Min(value = 1, message = "Age can't be negative")
     private int age;
 
